@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <h:outputStylesheet  library="webjars" name="bootstrap/5.3.3/css/bootstrap.css"/>
+    <h:outputStylesheet library="css" name="style.css" />
+</h:head>
+
+<f:view>
+    <h:body>
+        <ui:include src="WEB-INF/templates/navigation.xhtml" />
+
+        <div class="container-fluid">
+            <div class="body">
+                <div class="text-center m-5">
+                    <h1>#{i18nMessages.addEmployee}</h1>
+                </div>
+
+                <hr/><br/>
+
+                <div class="container">
+                    <h:messages globalOnly="true" infoClass="alert alert-success" errorClass="alert alert-danger" warnClass="alert alert-warning" style="list-style: none" />
+                </div>
+
+                <div>
+                    <h:form>
+                        <div class="mb-3">
+                            <h:outputLabel for="name" value="#{i18nMessages.name}" class="form-label"/>
+                            <h:inputText id="name" value="#{employee.name}" class="form-control" style="margin-right: 17px;" required="true"/>
+                        </div>
+
+                        <div class="mb-3">
+                            <h:outputLabel for="email" value="#{i18nMessages.email}" class="form-label"/>
+                            <h:inputText id="email" value="#{employee.email}" class="form-control" style="margin-right: 17px;" required="true"/>
+                        </div>
+
+                        <div class="mb-3">
+                            <h:outputLabel for="employeeName" value="#{i18nMessages.post}" class="form-label"/>
+                            <h:selectOneMenu class="form-control" id="employeeName" value="#{employee.post}" required="true">
+                                <f:selectItems value="#{addEmployeeBean.postValues}" />
+                            </h:selectOneMenu>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <h:outputLabel for="skills" value="#{i18nMessages.skills}" class="form-label"/>
+                            <h:selectManyListbox class="form-control" id="skills" value="#{employee.skills}" layout="pageDirection" required="true">
+                                <f:selectItems value="#{addEmployeeBean.availableSkills}" />
+                            </h:selectManyListbox>
+                        </div>
+
+
+
+                        <h:commandButton type="submit" id="addEmployee" value="#{i18nMessages.actionAddEmployee}"
+                                         action="#{addEmployeeBean.add(employee)}" class="btn btn-success"/>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        <br />
+
+        <h:outputStylesheet library="webjars" value="bootstrap/5.3.3/js/bootstrap.js"/>
+    </h:body>
+</f:view>
+</html>

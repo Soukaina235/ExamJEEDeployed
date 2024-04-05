@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="3.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                                  https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_3_0.xsd">
+
+    <managed-bean>
+        <managed-bean-name>employee</managed-bean-name>
+        <managed-bean-class>org.example.examjee.model.Employee</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>project</managed-bean-name>
+        <managed-bean-class>org.example.examjee.model.Project</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>assignment</managed-bean-name>
+        <managed-bean-class>org.example.examjee.model.Assignment</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <managed-property>
+            <property-name>employee</property-name>
+            <value>#{employee}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>project</property-name>
+            <value>#{project}</value>
+        </managed-property>
+    </managed-bean>
+
+    <navigation-rule>
+        <from-view-id>affect-employee.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>list.xhtml</from-outcome>
+            <to-view-id>/list.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <application>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>en</supported-locale>
+            <supported-locale>fr</supported-locale>
+        </locale-config>
+
+        <resource-bundle>
+            <base-name>i18n.labels</base-name>
+            <var>i18nMessages</var>
+        </resource-bundle>
+    </application>
+
+
+</faces-config>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <h:outputStylesheet library="webjars" name="bootstrap/5.3.3/css/bootstrap.css"/>
+    <h:outputStylesheet library="css" name="style.css" />
+</h:head>
+
+<f:view>
+    <h:body>
+        <ui:include src="/WEB-INF/templates/navigation.xhtml" />
+
+        <div class="container-fluid">
+            <div class="body">
+                <div class="text-center m-5">
+                    <h1>#{i18nMessages.listEmployees}</h1>
+                </div>
+
+                <hr/><br/>
+
+                <div class="container">
+                    <h:messages globalOnly="true" infoClass="alert alert-success" errorClass="alert alert-danger" warnClass="alert alert-warning" style="list-style: none" />
+                </div>
+
+                <h:form id="employeeForm">
+                    <!----><div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-12 border border-dark rounded p-3">
+                                <h:dataTable id="employeeTable" var="employee" value="#{listEmployeeBean.employees}"  styleClass="table table-striped" style="width:100%!important;">
+                                    <h:column style="width: 10%!important;" >
+                                        <f:facet name="header">#{i18nMessages.id}</f:facet>
+                                        <h:outputText value="#{employee.id}"/>
+                                    </h:column>
+                                    <h:column style="width: 20!important;">
+                                        <f:facet name="header">#{i18nMessages.name}</f:facet>
+                                        <h:outputText value="#{employee.name}"/>
+                                    </h:column>
+                                    <h:column style="width: 20%!important;">
+                                        <f:facet name="header">#{i18nMessages.email}</f:facet>
+                                        <h:outputText value="#{employee.email}"/>
+                                    </h:column>
+                                    <h:column style="width: 20%!important;">
+                                        <f:facet name="header">#{i18nMessages.skills}</f:facet>
+                                        <ul class="list-group">
+                                            <ui:repeat var="skill" value="#{employee.skills}">
+                                                <li class="list-group-item">#{skill}</li>
+                                            </ui:repeat>
+                                        </ul>
+                                    </h:column>
+                                    <h:column style="width: 20%!important;">
+                                        <f:facet name="header">#{i18nMessages.projects}</f:facet>
+                                        <ul class="list-group">
+                                            <ui:repeat var="assignment" value="#{listEmployeeBean.getAssignments(employee)}">
+                                                <li class="list-group-item">#{assignment.project.name}(#{assignment.implication})</li>
+                                            </ui:repeat>
+                                        </ul>
+                                    </h:column>
+                                    <h:column style="width: 10%!important;">
+                                        <f:facet name="header">#{i18nMessages.action}</f:facet>
+                                        <h:commandButton value="#{i18nMessages.actionDelete}" action="#{listEmployeeBean.delete(employee)}" type="submit"
+                                                         class="btn btn-danger text-center" />
+                                    </h:column>
+                                </h:dataTable>
+                            <!----></div>
+                        </div>
+                    </div>
+
+                </h:form>
+            </div>
+        </div>
+        <br />
+
+        <h:outputStylesheet library="webjars" value="bootstrap/5.3.3/js/bootstrap.js"/>
+    </h:body>
+</f:view>
+</html>

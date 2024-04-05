@@ -1,0 +1,17 @@
+org\example\examjee\view\AssignmentBean.class
+org\example\examjee\dao\ProjectDao.class
+org\example\examjee\model\Project.class
+org\example\examjee\dao\jpa\ProjectDaoImpl.class
+org\example\examjee\dao\EmployeeDao.class
+org\example\examjee\dao\jpa\EmployeeDaoImpl.class
+org\example\examjee\dao\jpa\AssignmentDaoImpl.class
+org\example\examjee\view\ListEmployeeBean.class
+org\example\examjee\model\Post.class
+org\example\examjee\view\AddEmployeeBean.class
+org\example\examjee\service\EmployeeService.class
+org\example\examjee\model\Employee.class
+org\example\examjee\model\AssignmentId.class
+org\example\examjee\service\AssignmentService.class
+org\example\examjee\dao\AssignmentDao.class
+org\example\examjee\validators\ImplicationValidator.class
+org\example\examjee\model\Assignment.class

@@ -1,0 +1,21 @@
+<div class="navbar navbar-expand-lg bg-body-tertiary" xmlns:ui="http://java.sun.com/jsf/facelets">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="list.xhtml">#{i18nMessages.navigationEmployees}</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                        <a class="nav-link #{view.viewId == '/list.xhtml' ? 'active' : ''}" href="list.xhtml">#{i18nMessages.navigationEmployees}</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link  #{view.viewId == '/add-employee.xhtml' ? 'active' : ''}" href="add-employee.xhtml">#{i18nMessages.navigationAddEmployee}</a>
+                </li>
+                <li class="nav-item">
+                    <ui:insert name="affect-employee-link">
+                        <a class="nav-link  #{view.viewId == '/affect-employee.xhtml' ? 'active' : ''}" href="affect-employee.xhtml">#{i18nMessages.navigationAffectEmployee}</a>
+                    </ui:insert>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
